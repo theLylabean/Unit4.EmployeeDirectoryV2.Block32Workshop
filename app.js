@@ -1,8 +1,10 @@
 import express from "express";
 const app = express();
-export default app;
 
 import employees from "#db/employees";
+
+//body parsing middleware --- the code won't be able to do this later if this isn't in here
+app.use(express.json());
 
 app.route("/").get((req, res) => {
   res.send("Hello employees!");
@@ -21,14 +23,23 @@ app.route("/employees/random").get((req, res) => {
 
 app.route("/employees/:id").get((req, res) => {
   const { id } = req.params;
-
+  
   // req.params are always strings, so we need to convert `id` into a number
   // before we can use it to find the employee
   const employee = employees.find((e) => e.id === +id);
-
+  
   if (!employee) {
     return res.status(404).send("Employee not found");
   }
-
+  
   res.send(employee);
+
 });
+
+//error handling middleware. has to be at the very end.
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).send('AN ERROR OCCURRED', err);
+})
+
+export default app;

@@ -1,14 +1,22 @@
 const employees = [
-  { id: 1, name: "Carolynn McGinlay" },
-  { id: 2, name: "Lodovico Filon" },
-  { id: 3, name: "Jefferey Wahlberg" },
-  { id: 4, name: "Kayley Tures" },
-  { id: 5, name: "Rickard Carver" },
-  { id: 6, name: "Michael Stryde" },
-  { id: 7, name: "Averell Santino" },
-  { id: 8, name: "Constantina Connue" },
-  { id: 9, name: "Verile Bondesen" },
-  { id: 10, name: "Gwen Grollmann" },
+  { id: 1, name: "Kevin Malone" },
+  { id: 2, name: "Dwight Schrute" },
+  { id: 3, name: "Jim Halpert" },
+  { id: 4, name: "Erin Hannon" },
+  { id: 5, name: "Stanley Hudson" },
+  { id: 6, name: "Creed Bratton" },
+  { id: 7, name: "Phillis Vance of Vance Refrigeration" },
+  { id: 8, name: "Oscar Martinez" },
+  { id: 9, name: "Angela Martin" },
+  { id: 10, name: "Toby Flenderson" },
 ];
 
-export default employees;
+export function getEmployees() {
+  return employees;
+}
+
+export function addEmployees(employee) {
+  employees.push(employee);
+}
+
+export default employees
