@@ -10,13 +10,21 @@ const employees = [
   { id: 9, name: "Angela Martin" },
   { id: 10, name: "Toby Flenderson" },
 ];
+let newId = Math.max(...employees.map(e => e.id)) + 1;
 
 export function getEmployees() {
   return employees;
 }
 
-export function addEmployees(employee) {
-  employees.push(employee);
+export function addEmployees(name) {
+  const checkEmployee = employees.some(emp => emp.name.toLowerCase() === name.toLowerCase());
+  if (checkEmployee) {
+    return null;
+  }
+  const newEmployee = {
+    id: newId++,
+    name
+  }
+  employees.push(newEmployee);
+  return newEmployee;
 }
-
-export default employees
